@@ -8,7 +8,7 @@ import { loadNavbar } from './components/navbar.js';
 import { router } from './router.js';
 
 /**
- * Navega entre rutas sin recargar.
+ * Navega entre rutas sin recargar -- .
  *
  * @param {string} url
  */
