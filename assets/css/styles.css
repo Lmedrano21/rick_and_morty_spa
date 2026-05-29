@@ -358,3 +358,85 @@ form button:hover,
 .card.card-location .card-body span {
     color: #f1ebd9; /* El contenido de texto toma un tono crema muy limpio */
 }
+
+
+
+
+
+
+/* ==========================================================================
+   TARJETAS DE EPISODIO (Estética Oficial Rick and Morty)
+   ========================================================================== */
+.card.card-episode {
+    /* 
+       Overlay oscuro con tintes negro y verde portal profundo (#0b1410).
+       REEMPLACEN 'COLOQUEN_AQUI_SU_URL_DEL_GIF' por el enlace real de su GIF.
+    */
+    background-image: 
+        linear-gradient(rgba(10, 12, 16, 0.85), rgba(11, 20, 16, 0.92)), 
+        url("https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaG9wcWRiNDFzNDM1dWRydzM4ZTZnYXhmOWh3aXZldWxwcmY3emdrNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kRNjoMnuCVHhJUVATe/giphy.gif") !important;
+    
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    
+    /* Borde inicial en el azul celeste de la camiseta de Rick */
+    border-color: rgba(0, 191, 255, 0.2); 
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    min-height: 380px; /* Altura fija para equilibrar la rejilla de la SPA */
+}
+
+/* Efecto Hover: Activación de energía de portal */
+.card.card-episode:hover {
+    border-color: var(--neon-green); /* El contorno se enciende en verde radioactivo */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7),
+                0 0 25px rgba(57, 255, 20, 0.25); /* Resplandor verde portal */
+    
+    /* Aclaramos sutilmente el fondo para que el movimiento del GIF destaque más */
+    background-image: 
+        linear-gradient(rgba(10, 12, 16, 0.72), rgba(11, 20, 16, 0.8)), 
+        url("https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaG9wcWRiNDFzNDM1dWRydzM4ZTZnYXhmOWh3aXZldWxwcmY3emdrNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kRNjoMnuCVHhJUVATe/giphy.gif") !important;
+}
+
+/* Espacio opcional superior por si lo necesitan en su estructura */
+.episode-image-placeholder {
+    width: 100%;
+    height: 120px;
+    background: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+/* Título del Episodio en Azul Celeste Rick */
+.card.card-episode .card-body h3 {
+    color: #00bfff; 
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(0, 191, 255, 0.4);
+    margin-top: 10px;
+}
+
+/* Las etiquetas ("Temporada/Episodio:", "Trama:") se destacan en Verde Portal */
+.card.card-episode .card-body p strong {
+    color: var(--neon-green); 
+    text-shadow: 0 0 5px rgba(57, 255, 20, 0.2);
+}
+
+/* El contenido del texto descriptivo se mantiene limpio y claro */
+.card.card-episode .card-body span {
+    color: #e2e8f0;
+    font-weight: 500;
+}
+
+/* Botón personalizado acoplado a la gama del Portal */
+.card.card-episode .btn-watch {
+    background: rgba(57, 255, 20, 0.05) !important;
+    color: var(--neon-green) !important;
+    border-color: rgba(57, 255, 20, 0.2) !important;
+    margin-top: auto;
+}
+
+.card.card-episode .btn-watch:hover {
+    background: var(--neon-green) !important;
+    color: var(--bg-dark) !important;
+    border-color: var(--neon-green) !important;
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.4);
+}

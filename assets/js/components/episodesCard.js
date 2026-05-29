@@ -1,25 +1,29 @@
-/**
- * Episode Card Component 
- */
 
-export function episodeCard(episode) {
+
+
+/**
+ * Episode Card Component
+ */
+export function episodeCard() {
     return `
-        <article class="card episode-card">
-            <div class="episode-header">
-                <h3>${episode.name}</h3>
-                <span class="episode-code">${episode.episode}</span>
-            </div>
+        <article class="card card-episode">
+            <!-- Espacio para la imagen o vector de portada del episodio -->
+            <div class="episode-image-placeholder"></div>
 
             <div class="card-body">
+                <h3>Odisea contra las Serpientes</h3>
                 <p>
-                    <strong>Fecha de emisión:</strong>
-                    ${episode.air_date}
+                    <strong>Temporada/Episodio:</strong>
+                    <span>S04E05</span>
                 </p>
                 <p>
-                    <strong>Personajes:</strong>
-                    ${episode.characters.length} personajes
+                    <strong>Trama:</strong>
+                    <span>Rick y Morty se enfrentan a serpientes viajeras en el tiempo.</span>
                 </p>
-
+                
+                <div class="card-buttons">
+                    <button class="btn-watch" type="button">Detalles</button>
+                </div>
             </div>
         </article>
     `;
