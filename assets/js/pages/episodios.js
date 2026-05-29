@@ -1,32 +1,20 @@
 import { loadHTML } from '../utils/helpers.js';
+import { getEpisodes } from '../services/api.js';
+import { episodeCard } from '../components/episodesCard.js';
 
-
-const API_URL = 'https://rickandmortyapi.com';
-const container = document.getElementById('episodios-container');
-
-async function cargarEpisodios() {
-    try {
-        const respuesta = await fetch(API_URL);
-        const datos = await respuesta.json();
-        renderizarEpisodios(datos.results);
-    } catch (error) {
-        container.innerHTML = '<p>Error al cargar los datos.</p>';
-    }
+/**
+ * Renderiza Home con episodios
+ */
+export async function renderEpisodes() {
+    const content = document.getElementById('content');
+    content.innerHTML = await loadHTML(
+        './assets/js/views/episodios.html'
+    );
+    const container = document.getElementById(
+        'episodios_container'  // Puedes cambiar este ID a 'episodes-container' si prefieres
+    );
+    const episodes = await getEpisodes();
+    container.innerHTML = episodes
+        .map(episode => episodeCard(episode))
+        .join('');
 }
-
-function renderizarEpisodios(episodios) {
-    container.innerHTML = '';
-    episodios.forEach(epi => {
-        const tarjeta = document.createElement('div');
-        tarjeta.className = 'card';
-        tarjeta.innerHTML = `
-            <h3>${epi.name}</h3>
-            <p><strong>Fecha:</strong> ${epi.air_date}</p>
-            <p><strong>Código:</strong> ${epi.episode}</p>
-        `;
-        container.appendChild(tarjeta);
-    });
-}
-
-cargarEpisodios();
-
