@@ -1,3 +1,4 @@
+/* ============ ESTILOS BASE ============ */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -52,4 +53,267 @@ input,
 textarea,
 button {
     padding: 1rem;
+}
+
+/* ============ TARJETAS DE EPISODIOS ============ */
+.episode-card {
+    background: #f0f4f8;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.episode-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0px 6px 15px rgba(0,0,0,.15);
+}
+
+.episode-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #dde4ea;
+    padding-bottom: 0.8rem;
+}
+
+.episode-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #202329;
+}
+
+.episode-code {
+    font-weight: bold;
+    background: #e2e8f0;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    color: #4a5568;
+}
+
+.episode-card button {
+    padding: 0.8rem 1rem;
+    width: 100%;
+    margin-top: 0.5rem;
+    background: #2d3748;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.episode-card button:hover {
+    background: #4a5568;
+}
+
+/* ============ TARJETAS DE UBICACIONES ============ */
+.location-card {
+    background: #f7faf0;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.location-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0px 6px 15px rgba(0,0,0,.15);
+}
+
+.location-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #e2e8d5;
+    padding-bottom: 0.8rem;
+}
+
+.location-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #202329;
+}
+
+.location-type {
+    font-weight: bold;
+    background: #e6ecd8;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #4a5a38;
+}
+
+.location-card button {
+    padding: 0.8rem 1rem;
+    width: 100%;
+    margin-top: 0.5rem;
+    background: #2d3748;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.location-card button:hover {
+    background: #4a5568;
+}
+
+/* ============ POPUPS ============ */
+[popover] {
+    border: none;
+    border-radius: 10px;
+    padding: 0;
+    box-shadow: 0px 10px 30px rgba(0,0,0,.2);
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    background: white;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.popup-content {
+    padding: 1.5rem;
+}
+
+.episode-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #dde4ea;
+    background: #f0f4f8;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.location-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e2e8d5;
+    background: #f7faf0;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.episode-detail-header h3,
+.location-detail-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #202329;
+}
+
+.location-type-badge {
+    font-weight: bold;
+    background: #e6ecd8;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #4a5a38;
+}
+
+.episode-info,
+.location-info {
+    margin: 1rem 0;
+}
+
+.episode-info p,
+.location-info p {
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+}
+
+.episode-info a,
+.location-info a {
+    word-break: break-all;
+    color: #2d3748;
+}
+
+.characters-section,
+.residents-section {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.characters-section h4,
+.residents-section h4 {
+    margin: 0 0 0.5rem 0;
+    color: #202329;
+}
+
+.character-list,
+.resident-list {
+    max-height: 200px;
+    overflow-y: auto;
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.character-list li,
+.resident-list li {
+    padding: 0.4rem 0;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+details {
+    margin-top: 1rem;
+}
+
+details summary {
+    font-weight: bold;
+    padding: 0.6rem;
+    margin: 0.5rem 0;
+    background: #f4f4f4;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+details summary:hover {
+    background: #e8e8e8;
+}
+
+[popover] button {
+    padding: 0.8rem 1rem;
+    width: 100%;
+    margin-top: 1rem;
+    background: #2d3748;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+[popover] button:hover {
+    background: #4a5568;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+    
+    [popover] {
+        width: 95%;
+        max-height: 85vh;
+    }
 }

@@ -19,20 +19,7 @@ export function episodeCard(episode) {
                     <strong>Personajes:</strong>
                     ${episode.characters.length} personajes
                 </p>
-    
-                <div class="characters-section">
-                    <h4>Personajes en este episodio:</h4>
-                    <p>Total: ${episode.characters.length} personajes</p>
-                    <details>
-                        <summary>Ver lista de personajes</summary>
-                        <ul class="character-list">
-                            ${episode.characters.map(url => {
-                                const characterId = url.split('/').pop();
-                                return `<li>Personaje #${characterId}</li>`;
-                            }).join('')}
-                        </ul>
-                    </details>
-                </div>
+
             </div>
         </article>
     `;

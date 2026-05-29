@@ -38,12 +38,13 @@ export async function getEpisodes() {
  * obtener locations
  */
 
-export async function getLocations() {
+export async function getlocation() {
     try {
         const response = await httpClient.get('/location');
+        console.log(response.data.results);
         return response.data.results;
     } catch (error) {
-        console.error(error);
+        console.error('Error al obtener ubicaciones:', error);
         return [];
     }
 }
