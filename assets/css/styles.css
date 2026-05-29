@@ -1,360 +1,303 @@
-/* ============ ESTILOS BASE ============ */
+/* ==========================================================================
+   1. PALETA DE COLORES Y VARIABLES (Estética Dark Premium)
+   ========================================================================== */
+:root {
+    --bg-dark: #0a0b0e;
+    --card-bg: rgba(22, 26, 37, 0.65);
+    --neon-green: #39ff14;
+    --neon-blue: #00f3ff;
+    --neon-pink: #ff0055;
+    --text-main: #f0f2f5;
+    --text-muted: #94a3b8;
+    --glass-border: rgba(255, 255, 255, 0.04);
+}
+
+/* Base del cuerpo */
 body {
+    background-color: var(--bg-dark) !important;
+    color: var(--text-main);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
+    padding: 20px 40px 60px 40px;
+    min-height: 100vh;
+    background-image: 
+        radial-gradient(circle at 10% 10%, rgba(0, 243, 255, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 90% 90%, rgba(57, 255, 20, 0.03) 0%, transparent 50%);
+    background-attachment: fixed;
 }
 
-[hidden] {
-    display: none !important;
-}
-
-.navbar {
-    background: #202329;
-    padding: 1rem;
+/* ==========================================================================
+   2. NAVBAR Y TÍTULOS GENERALES
+   ========================================================================== */
+nav {
     display: flex;
-    gap: 1rem;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px 0;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--glass-border);
 }
 
-.navbar a {
-    color: white;
+nav a {
+    color: var(--text-muted);
     text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
-main {
-    padding: 2rem;
+nav a:hover {
+    color: var(--neon-blue);
+    text-shadow: 0 0 8px rgba(0, 243, 255, 0.6);
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
+/* Título Principal */
+h1 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    letter-spacing: -0.5px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
-.card {
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0px 3px 10px rgba(0,0,0,.1);
-    max-width: 320px;
-    width: 100%;
+/* Títulos de Secciones (Personajes creados / Personajes de la API) */
+h2 {
+    font-size: 1.6rem;
+    color: #ffffff;
+    margin-top: 50px;
+    margin-bottom: 25px;
+    border-left: 4px solid var(--neon-green);
+    padding-left: 14px;
+    letter-spacing: -0.3px;
 }
 
-.card img {
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    width: 100%;
+/* Alternancia de color para el segundo título de sección */
+h2:nth-of-type(3), 
+h2:contains("API") {
+    border-left-color: var(--neon-blue);
 }
 
-.card-body {
-    padding: 1rem;
+/* ==========================================================================
+   3. FORMULARIO DE EDICIÓN SUPERIOR (CREAR / ACTUALIZAR)
+   ========================================================================== */
+/* Contenedor principal del formulario */
+form, .form-container {
+    background: rgba(22, 28, 38, 0.4);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 40px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
 }
 
+/* Reorganiza los inputs sueltos en una rejilla adaptativa en lugar de una línea infinita */
+form div:has(input), 
+.inputs-wrapper,
 form {
     display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+/* Estilo unificado para los campos de texto y selectores del formulario */
+form input, 
+form select,
+.form-container input {
+    flex: 1;
+    min-width: 200px;
+    background: rgba(10, 12, 16, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 14px 18px;
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+form input:focus, 
+form select:focus {
+    outline: none;
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 0 3px rgba(0, 243, 255, 0.15);
+    background: rgba(0, 243, 255, 0.02);
+}
+
+/* ==========================================================================
+   4. CONTROLADORES GRID MULTI-CONTENEDOR (API Y CREADOS)
+   ========================================================================== */
+/* El selector inteligente [id*="container"] busca cualquier contenedor de tarjetas */
+#characters-container, 
+#user-characters-container, 
+#created-characters-container,
+.characters-grid,
+[id*="container"] {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+    gap: 32px !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 10px 0 30px 0 !important;
+    width: 100% !important;
+}
+
+/* ==========================================================================
+   5. COMPONENTE TARJETA (CARD) PREMIUM
+   ========================================================================== */
+.card {
+    background: var(--card-bg);
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    display: flex;
     flex-direction: column;
-    gap: 1rem;
-    max-width: 400px;
-}
-
-.character-form {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0px 3px 10px rgba(0,0,0,.1);
-    margin: 1rem 0 2rem;
-    padding: 1rem;
-    max-width: 900px;
-}
-
-.create-form {
-    border-left: 6px solid #2f9e44;
-}
-
-.edit-form {
-    border-left: 6px solid #1971c2;
-}
-
-.form-grid {
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-}
-
-.form-actions {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-section h2 {
-    margin-top: 2rem;
-}
-
-input,
-textarea,
-button {
-    padding: 1rem;
-}
-
-/* ============ TARJETAS DE EPISODIOS ============ */
-.episode-card {
-    background: #f0f4f8;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.episode-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0px 6px 15px rgba(0,0,0,.15);
-}
-
-.episode-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-    border-bottom: 1px solid #dde4ea;
-    padding-bottom: 0.8rem;
-}
-
-.episode-header h3 {
-    margin: 0;
-    font-size: 1.1rem;
-    color: #202329;
-}
-
-.episode-code {
-    font-weight: bold;
-    background: #e2e8f0;
-    padding: 0.3rem 0.6rem;
-    border-radius: 4px;
-    font-size: 0.85rem;
-    color: #4a5568;
-}
-
-.episode-card button {
-    padding: 0.8rem 1rem;
     width: 100%;
-    margin-top: 0.5rem;
-    background: #2d3748;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.2s ease;
+    box-sizing: border-box;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                box-shadow 0.4s ease, 
+                border-color 0.4s ease;
 }
 
-.episode-card button:hover {
-    background: #4a5568;
+/* Animación hover con brillo suave controlado */
+.card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(0, 243, 255, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6),
+                0 0 25px rgba(0, 243, 255, 0.12);
 }
 
-/* ============ TARJETAS DE UBICACIONES ============ */
-.location-card {
-    background: #f7faf0;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+/* Estilo de imagen adaptativo (Corrige las imágenes de Rick y del Avatar Gris) */
+.character-image, 
+.card img {
+    width: 100% !important;
+    height: 280px !important;
+    object-fit: cover !important;
+    border-bottom: 1px solid var(--glass-border);
+    display: block;
+    transition: transform 0.5s ease;
 }
 
-.location-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0px 6px 15px rgba(0,0,0,.15);
+.card:hover .character-image,
+.card:hover img {
+    transform: scale(1.02);
 }
 
-.location-header {
+/* Contenido de la tarjeta */
+.card-body {
+    padding: 24px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-    border-bottom: 1px solid #e2e8d5;
-    padding-bottom: 0.8rem;
+    flex-direction: column;
+    gap: 12px;
+    flex-grow: 1;
 }
 
-.location-header h3 {
+.card-body h3 {
+    margin: 0 0 4px 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+}
+
+.card-body p {
     margin: 0;
-    font-size: 1.1rem;
-    color: #202329;
-}
-
-.location-type {
-    font-weight: bold;
-    background: #e6ecd8;
-    padding: 0.3rem 0.6rem;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    color: #4a5a38;
-}
-
-.location-card button {
-    padding: 0.8rem 1rem;
-    width: 100%;
-    margin-top: 0.5rem;
-    background: #2d3748;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.2s ease;
-}
-
-.location-card button:hover {
-    background: #4a5568;
-}
-
-/* ============ POPUPS ============ */
-[popover] {
-    border: none;
-    border-radius: 10px;
-    padding: 0;
-    box-shadow: 0px 10px 30px rgba(0,0,0,.2);
-    max-width: 500px;
-    width: 90%;
-    max-height: 80vh;
-    overflow-y: auto;
-    background: white;
-    animation: fadeIn 0.2s ease;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-.popup-content {
-    padding: 1.5rem;
-}
-
-.episode-detail-header {
+    font-size: 0.95rem;
+    color: var(--text-muted);
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #dde4ea;
-    background: #f0f4f8;
-    padding: 1rem;
-    border-radius: 8px;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+    padding-bottom: 8px;
 }
 
-.location-detail-header {
+.card-body p strong {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 400;
+}
+
+/* Badges de estados internos */
+.character-status, 
+.character-species,
+.card-body span {
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+/* Panel inferior de botones en la tarjeta */
+.card-buttons {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #e2e8d5;
-    background: #f7faf0;
-    padding: 1rem;
-    border-radius: 8px;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 15px;
 }
 
-.episode-detail-header h3,
-.location-detail-header h3 {
-    margin: 0;
-    font-size: 1.2rem;
-    color: #202329;
-}
-
-.location-type-badge {
-    font-weight: bold;
-    background: #e6ecd8;
-    padding: 0.3rem 0.6rem;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    color: #4a5a38;
-}
-
-.episode-info,
-.location-info {
-    margin: 1rem 0;
-}
-
-.episode-info p,
-.location-info p {
-    margin-bottom: 0.75rem;
-    line-height: 1.5;
-}
-
-.episode-info a,
-.location-info a {
-    word-break: break-all;
-    color: #2d3748;
-}
-
-.characters-section,
-.residents-section {
-    margin-top: 1.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid #eee;
-}
-
-.characters-section h4,
-.residents-section h4 {
-    margin: 0 0 0.5rem 0;
-    color: #202329;
-}
-
-.character-list,
-.resident-list {
-    max-height: 200px;
-    overflow-y: auto;
-    padding-left: 1.5rem;
-    margin-top: 0.5rem;
-}
-
-.character-list li,
-.resident-list li {
-    padding: 0.4rem 0;
-    border-bottom: 1px solid #f4f4f4;
-}
-
-details {
-    margin-top: 1rem;
-}
-
-details summary {
-    font-weight: bold;
-    padding: 0.6rem;
-    margin: 0.5rem 0;
-    background: #f4f4f4;
-    border-radius: 5px;
+/* ==========================================================================
+   6. BOTONES GLOBALES CIBERNYETICOS
+   ========================================================================== */
+button, 
+input[type="submit"],
+.btn {
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-main);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s ease;
-}
-
-details summary:hover {
-    background: #e8e8e8;
-}
-
-[popover] button {
-    padding: 0.8rem 1rem;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
     width: 100%;
-    margin-top: 1rem;
-    background: #2d3748;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.2s ease;
+    box-sizing: border-box;
+    display: inline-block;
+    text-align: center;
 }
 
-[popover] button:hover {
-    background: #4a5568;
+button:hover, 
+input[type="submit"]:hover {
+    background: var(--text-main) !important;
+    color: var(--bg-dark) !important;
+    border-color: var(--text-main) !important;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
 }
 
-/* ============ RESPONSIVE ============ */
-@media (max-width: 768px) {
-    .grid {
-        grid-template-columns: 1fr;
-    }
-    
-    [popover] {
-        width: 95%;
-        max-height: 85vh;
-    }
+/* Variación para botones de Eliminar / Cancelar */
+.btn-delete, 
+button[type="submit"],
+button:nth-of-type(2) {
+    color: #ff4a5a !important;
+    border-color: rgba(255, 74, 90, 0.2) !important;
+    background: transparent;
+}
+
+.btn-delete:hover, 
+button[type="submit"]:hover,
+button:nth-of-type(2):hover {
+    background: #ff4a5a !important;
+    color: #ffffff !important;
+    border-color: #ff4a5a !important;
+    box-shadow: 0 0 20px rgba(255, 74, 90, 0.3);
+}
+
+/* Variación para botones de Guardar / Actualizar */
+.btn-save,
+form button,
+.form-container button {
+    background: rgba(57, 255, 20, 0.1);
+    color: var(--neon-green);
+    border-color: rgba(57, 255, 20, 0.2);
+}
+
+.btn-save:hover,
+form button:hover,
+.form-container button:hover {
+    background: var(--neon-green) !important;
+    color: var(--bg-dark) !important;
+    border-color: var(--neon-green) !important;
+    box-shadow: 0 0 25px rgba(57, 255, 20, 0.3);
 }
