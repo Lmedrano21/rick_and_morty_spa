@@ -1,5 +1,54 @@
 <section>
     <h1>Rick and Morty Characters</h1>
 
+    <button type="button" id="open-create-form">Nuevo personaje</button>
+
+    <form id="create-character-form" class="character-form create-form" hidden>
+        <h2>Crear nuevo personaje</h2>
+
+        <div class="form-grid">
+            <input type="text" id="create-name" placeholder="Nombre" required>
+            <input type="text" id="create-status" placeholder="Estado" required>
+            <input type="text" id="create-species" placeholder="Especie" required>
+            <input type="text" id="create-type" placeholder="Tipo">
+            <input type="text" id="create-gender" placeholder="Género" required>
+            <input type="text" id="create-origin" placeholder="Origen" required>
+            <input type="text" id="create-location" placeholder="Ubicación" required>
+            <input type="url" id="create-image" placeholder="URL de imagen">
+        </div>
+
+        <div class="form-actions">
+            <button type="submit">Guardar personaje</button>
+            <button type="button" id="cancel-create">Cancelar</button>
+        </div>
+    </form>
+
+    <form id="edit-character-form" class="character-form edit-form" hidden>
+        <h2>Editar personaje</h2>
+
+        <input type="hidden" id="edit-character-id">
+        <input type="hidden" id="edit-character-source">
+
+        <div class="form-grid">
+            <input type="text" id="edit-name" placeholder="Nombre" required>
+            <input type="text" id="edit-status" placeholder="Estado" required>
+            <input type="text" id="edit-species" placeholder="Especie" required>
+            <input type="text" id="edit-type" placeholder="Tipo">
+            <input type="text" id="edit-gender" placeholder="Género" required>
+            <input type="text" id="edit-origin" placeholder="Origen" required>
+            <input type="text" id="edit-location" placeholder="Ubicación" required>
+            <input type="url" id="edit-image" placeholder="URL de imagen">
+        </div>
+
+        <div class="form-actions">
+            <button type="submit">Actualizar personaje</button>
+            <button type="button" id="cancel-edit">Cancelar</button>
+        </div>
+    </form>
+
+    <h2>Personajes creados</h2>
+    <div id="created-characters-container" class="grid"></div>
+
+    <h2>Personajes de la API</h2>
     <div id="characters-container" class="grid"></div>
 </section>
