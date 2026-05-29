@@ -301,3 +301,60 @@ form button:hover,
     border-color: var(--neon-green) !important;
     box-shadow: 0 0 25px rgba(57, 255, 20, 0.3);
 }
+
+
+
+
+
+
+
+/* ==========================================================================
+   TARJETAS DE LOCATION (Fondo de Portal Dorado / Evil Morty)
+   ========================================================================== */
+.card.card-location {
+    /* 
+       Overlay con tintes negros y ámbar translúcidos (#241a08).
+       Mantiene el GIF atenuado de fondo para garantizar la lectura.
+    */
+    background-image: 
+        linear-gradient(rgba(10, 12, 16, 0.85), rgba(36, 26, 8, 0.92)), 
+        url("https://media2.giphy.com/media/zPlGxzu027rEELiCFr/giphy.gif");
+    
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* Borde dorado de alta tecnología (sutil por defecto) */
+    border-color: rgba(255, 191, 0, 0.15); 
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Efecto al pasar el mouse (Se enciende la energía dorada) */
+.card.card-location:hover {
+    /* El borde se enciende en oro brillante */
+    border-color: #ffbf00; 
+    
+    /* Resplandor exterior dorado/ámbar suave */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7),
+                0 0 30px rgba(255, 191, 0, 0.25); 
+    
+    /* Aclaramos el degradado para que se note más el movimiento de los rayos amarillos */
+    background-image: 
+        linear-gradient(rgba(10, 12, 16, 0.72), rgba(36, 26, 8, 0.8)), 
+        url("https://media2.giphy.com/media/zPlGxzu027rEELiCFr/giphy.gif");
+}
+
+/* Título de la Ubicación resaltado en Oro Eléctrico */
+.card.card-location .card-body h3 {
+    color: #ffd700; /* Oro Puro */
+    text-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
+}
+
+/* Ajuste de los datos del componente para que combinen con la paleta de colores */
+.card.card-location .card-body p strong {
+    color: #ffaa00; /* Las etiquetas como "Type:" o "Dimension:" cambian a naranja dorado */
+}
+
+.card.card-location .card-body span {
+    color: #f1ebd9; /* El contenido de texto toma un tono crema muy limpio */
+}
