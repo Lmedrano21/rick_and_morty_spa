@@ -3,8 +3,9 @@
  */
 
 export function characterCard(character) {
-    // Crear un ID único para cada personaje
-    const popupId = `popup-${character.id || Math.random().toString(36).substr(2, 9)}`;
+    const source = character.source || 'api';
+    const origin = character.origin?.name || character.origin || 'Desconocido';
+    const location = character.location?.name || character.location || 'Desconocida';
 
     return `
         <article class="card">
@@ -23,29 +24,36 @@ export function characterCard(character) {
                     <strong>Species:</strong>
                     ${character.species}
                 </p>
+                <p>
+                    <strong>Gender:</strong>
+                    ${character.gender}
+                </p>
+                <p>
+                    <strong>Origin:</strong>
+                    ${origin}
+                </p>
+                <p>
+                    <strong>Location:</strong>
+                    ${location}
+                </p>
                 
-                <button popovertarget="${popupId}">Editar</button>
+                <button
+                    type="button"
+                    class="edit-btn"
+                    data-id="${character.id}"
+                    data-source="${source}"
+                >
+                    Editar
+                </button>
 
-                
-                <div id="${popupId}" popover>
-                
-                <div class="card-body">
-                    <h3>${character.name}</h3>
-                    <p>
-                        <strong>Status:</strong>
-                        ${character.status}
-                    </p>
-                    <p>
-                        <strong>Species:</strong>
-                        ${character.species}
-                    </p>
-                    
-                </div>
-        
-                <button popovertarget="${popupId}" popovertargetaction="hide">Cerrar</button>
-                </div>
-
-                <button type="submit">Eliminar</button>
+                <button
+                    type="button"
+                    class="delete-btn"
+                    data-id="${character.id}"
+                    data-source="${source}"
+                >
+                    Eliminar
+                </button>
             </div>
         </article>
     `;
